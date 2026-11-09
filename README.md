@@ -1,4 +1,4 @@
-# Zen URL Context Quick Actions
+# Splendid Url Context
 
 A local Zen Browser stylesheet mod that presents four existing link context-menu actions as an icon row:
 
@@ -15,7 +15,27 @@ The mod styles and positions Zen's native menu entries in a reserved strip at th
 
 Tested on **Linux with Zen Browser 1.23.4b**. Other platforms and versions have not been verified. Menu sizing and colors depend on your platform and theme.
 
-## Install locally
+## Install in Zen's Mods list
+
+Requires GNU Make and Python 3.8+. This installs the stylesheet as a native Zen Mod, so it appears in **Settings → Zen Mods**. It does not require the legacy custom-stylesheet preference.
+
+Find the **Root Directory** of your active profile in `about:profiles`, then quit Zen and run:
+
+```sh
+make install-mod PROFILE="/full/path/to/your/zen/profile"
+```
+
+Restart Zen to load **Splendid Url Context**. The installer preserves other mods and their settings, makes a backup before updating an existing `zen-themes.json`, and removes only this mod's marked legacy `userChrome.css` import and `user.js` preference block when migrating from the legacy install. The old standalone CSS file is left in place but no longer imported.
+
+To uninstall, quit Zen and run:
+
+```sh
+make uninstall-mod PROFILE="/full/path/to/your/zen/profile"
+```
+
+You can also remove the mod from **Settings → Zen Mods**.
+
+## Legacy CSS install
 
 Requires Python 3.10 or newer and GNU Make.
 
@@ -72,7 +92,7 @@ Use a new version tag for each release. Creating a tag locally without pushing i
 
 The workflow generates GitHub release notes and attaches:
 
-- `zen-mod-url-context.zip`: a package containing the CSS, installer, Makefile, README, license, and screenshot assets under a `zen-mod-url-context/` directory.
+- `zen-mod-splendid-url-context.zip`: a package containing the CSS, legacy and native installers, native mod metadata, Makefile, README, license, and screenshot assets under a `zen-mod-splendid-url-context/` directory.
 - `zen-url-context.css`: the standalone stylesheet.
 
 Follow progress in the repository's **Actions** tab; the published version appears under **Releases**. GitHub Actions must be enabled in the repository settings. Authentication uses GitHub's automatic `GITHUB_TOKEN`; no personal access token or extra secret is needed. Release notes are generated from GitHub's change history, not from `CHANGELOG.md`.

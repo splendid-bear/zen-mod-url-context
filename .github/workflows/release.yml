@@ -23,9 +23,10 @@ jobs:
       - name: Build release ZIP
         run: |
           git archive --format=zip \
-            --prefix=zen-mod-url-context/ \
-            --output=zen-mod-url-context.zip \
-            HEAD -- zen-url-context.css install.py Makefile README.md LICENSE assets
+            --prefix=zen-mod-splendid-url-context/ \
+            --output=zen-mod-splendid-url-context.zip \
+            HEAD -- zen-url-context.css install.py native_install.py manifest.json \
+            Makefile README.md LICENSE assets
 
       - name: Publish GitHub release
         env:
@@ -33,7 +34,7 @@ jobs:
           TAG: ${{ github.ref_name }}
         run: |
           gh release create "$TAG" \
-            zen-mod-url-context.zip \
+            zen-mod-splendid-url-context.zip \
             zen-url-context.css \
             --verify-tag \
             --title "$TAG" \
